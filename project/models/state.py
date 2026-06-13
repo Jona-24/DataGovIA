@@ -7,6 +7,8 @@ class GraphState(TypedDict):
 
     organization_context: dict
 
+    technology_profile: dict
+
     capability_gaps: list
 
     retrieved_knowledge: list
@@ -14,3 +16,7 @@ class GraphState(TypedDict):
     recommendations: list
 
     diagnosis: dict
+
+    strategy: dict
+
+    final_response: str
