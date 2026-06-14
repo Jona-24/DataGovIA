@@ -8,11 +8,8 @@ def diagnostic_agent(state):
 
     print("Running Diagnostic Agent")
 
-    symptoms = state["organization_context"].get(
-        "symptoms",
-        []
-    )
-
+    symptoms = state.organization_context.symptoms
+    
     prompt = f"""
     You are a Data Governance expert.
 
@@ -53,7 +50,7 @@ def diagnostic_agent(state):
         json_match.group()
     )
 
-    state["capability_gaps"] = parsed[
+    state.capability_gaps = parsed[
         "capability_gaps"
     ]
 

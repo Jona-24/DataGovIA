@@ -7,11 +7,11 @@ def strategy_agent(state):
 
     print("Running Strategy Agent")
 
-    diagnosis = state["diagnosis"]
+    diagnosis = state.diagnosis
 
-    technology_profile = state["technology_profile"]
+    technology_profile = state.technology_profile
 
-    knowledge = state["retrieved_knowledge"]
+    knowledge = state.retrieved_knowledge
 
     prompt = f"""
     You are a senior Data Governance consultant.
@@ -57,6 +57,6 @@ def strategy_agent(state):
         json_match.group()
     )
 
-    state["strategy"] = parsed
+    state.strategy = parsed
 
     return state

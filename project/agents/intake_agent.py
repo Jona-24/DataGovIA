@@ -2,6 +2,7 @@ import json
 import re
 
 from llm.provider import llm
+from models.organization_context import OrganizationContext
 
 
 def intake_agent(state):
@@ -24,7 +25,7 @@ def intake_agent(state):
 
     Description:
 
-    {state["user_input"]}
+    {state.user_input}
     """
 
     response = llm.invoke(prompt)
@@ -39,6 +40,6 @@ def intake_agent(state):
         json_match.group()
     )
 
-    state["organization_context"] = parsed
+    state.organization_context = OrganizationContext(**parsed)
 
     return state

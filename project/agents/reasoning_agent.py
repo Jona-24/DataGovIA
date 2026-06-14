@@ -1,25 +1,17 @@
 from llm.provider import llm
 import json
 import re
+from models.diagnosis import Diagnosis
 
 def reasoning_agent(state):
 
     print("Running Reasoning Agent")
 
-    context = state.get(
-        "organization_context",
-        {}
-    )
+    context = state.organization_context
 
-    gaps = state.get(
-        "capability_gaps",
-        []
-    )
-
-    knowledge = state.get(
-        "retrieved_knowledge",
-        []
-    )
+    gaps = state.capability_gaps
+    
+    knowledge = state.retrieved_knowledge
 
     prompt = f"""
     You are a senior Data Governance consultant.
@@ -64,6 +56,11 @@ def reasoning_agent(state):
         json_match.group()
     )
 
-    state["diagnosis"] = parsed
+    diagnosis = Diagnosis(
+        **parsed
+    )
+
+
+    state.diagnosis = parsed
 
     return state

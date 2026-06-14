@@ -1,22 +1,33 @@
-from typing import TypedDict
+from pydantic import BaseModel, Field
+from typing import Optional
+
+from models.organization_context import OrganizationContext
+from models.technology_profile import TechnologyProfile
+from models.diagnosis import Diagnosis
+from models.strategy import Strategy
+from models.dss_report import DSSReport
 
 
-class GraphState(TypedDict):
+class GraphState(
+    BaseModel
+):
 
     user_input: str
 
-    organization_context: dict
+    organization_context: OrganizationContext | None = None
 
-    technology_profile: dict
+    capability_gaps: list[str] = Field(
+        default_factory=list
+    )
 
-    capability_gaps: list
+    retrieved_knowledge: list[str] = Field(
+        default_factory=list
+    )
 
-    retrieved_knowledge: list
+    technology_profile: TechnologyProfile | None = None
 
-    recommendations: list
+    diagnosis: Diagnosis | None = None
 
-    diagnosis: dict
+    strategy: Strategy | None = None
 
-    strategy: dict
-
-    final_response: str
+    final_response: DSSReport | None = None

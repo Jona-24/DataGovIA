@@ -20,54 +20,70 @@ Context → Symptoms → Capability Gaps → Risks → Recommendations → Expec
 ```
 TFM/
 ├── project/                          # Main application
-│   ├── main.py                      # Entry point with example usage
-│   ├── requirements.txt             # Python dependencies
-│   ├── agents/                      # Multi-agent system
-│   │   ├── intake_agent.py         # Collects organizational context
-│   │   ├── diagnostic_agent.py     # Identifies capability gaps and risks
-│   │   ├── retrieval_agent.py      # Retrieves relevant knowledge
-│   │   └── reasoning_agent.py      # Generates recommendations
-│   ├── models/                      # Data structures
-│   │   ├── state.py                # Graph state definition
-│   │   ├── diagnosis.py            # Diagnosis model
-│   │   └── intake_result.py        # Intake results model
-│   ├── llm/                         # LLM provider configuration
-│   │   └── provider.py             # LLM provider setup
-│   └── prompts/                    # Agent prompt templates
-│
-├── knowledge_bases/                 # Domain knowledge
-│   ├── Knowledge_Model_v1_FROZEN.md # Core knowledge model (FROZEN)
-│   ├── capabilities/                # Capability definitions
-│   │   └── KU_METADATA_MANAGEMENT_v1.0.md
-│   ├── data_governance/             # Data governance knowledge
-│   │   └── KU_DATA_GOVERNANCE_DAMA.md
-│   └── vectorstore/                 # Vector database utilities
-│       ├── build_db.py             # Build knowledge vector store
-│       ├── debug_chroma.py         # Debug Chroma database
-│       └── query_db.py             # Query vector database
-│
-├── chroma_db/                       # Vector store (Chroma)
-│   └── chroma.sqlite3              # SQLite vector database
-│
-├── Estado del arte/                 # Research and reference materials
-├── .gitignore                       # Git ignore file
-└── venv/                           # Python virtual environment
+│   ├── main.py                       # Entry point with example usage
+│   ├── agents/                       # Multi-agent system
+│   │   ├── intake_agent.py           # Collects organizational context
+│   │   ├── diagnostic_agent.py       # Identifies capability gaps and risks
+│   │   ├── retrieval_agent.py        # Retrieves relevant knowledge
+│   │   ├── reasoning_agent.py        # Generates recommendations
+│   │   ├── dss_agent.py              # Orchestrates decision support outputs
+│   │   ├── strategy_agent.py         # Generates strategic actions
+│   │   └── technology_assessment_agent.py # Assesses technology profiles
+│   ├── models/                       # Data structures
+│   │   ├── state.py                  # Graph state definition
+│   │   ├── diagnosis.py              # Diagnosis model
+│   │   ├── intake_result.py          # Intake results model
+│   │   ├── organization_context.py   # Organization context model
+│   │   ├── capability_gap.py         # Capability gap model
+│   │   ├── dss_report.py             # DSS report model
+│   │   ├── recommendation.py         # Recommendation model
+│   │   ├── strategy.py               # Strategy model
+│   │   ├── strategic_action.py       # Strategic action model
+│   │   └── technology_profile.py     # Technology profile model
+│   ├── llm/                          # LLM provider configuration
+│   │   └── provider.py               # LLM provider setup
+│   └── prompts/                      # Agent prompt templates
+
+├── knowledge_bases/                  # Domain knowledge
+│   ├── capabilities/                 # Capability definitions
+│   │   ├── Knowledge_Model_v2.md     # Core knowledge model (FROZEN / v2 draft)
+│   │   ├── KU_DATA GOVERNANCE_v1.0.md
+│   │   ├── KU_DATA_ARCHITECTURE_v1.0.md
+│   │   └── KU_METADATA_MANAGEMENT_v2.md
+│   └── vectorstore/                  # Vector database utilities
+│       ├── build_db.py               # Build knowledge vector store
+│       ├── debug_chroma.py           # Debug Chroma database
+│       └── query_db.py               # Query vector database
+
+├── chroma_db/                        # Vector store (Chroma)
+│   └── chroma.sqlite3                # SQLite vector database
+
+├── Estado del arte/                  # Research and reference materials
+├── chroma_db/                        # Vector DB artifacts
+├── requirements.txt                  # Project dependencies (root)
+├── .gitignore                        # Git ignore file
+└── venv/                             # Python virtual environment
 ```
 
 ## Key Components
 
 ### Multi-Agent System
 
-The system uses a pipeline orchestrated by LangGraph:
-***Actual(Work in Process)
-1. **Intake Agent** - Collects organizational context and current state
-2. **Diagnostic Agent** - Analyzes gaps and identifies risks
-3. **Retrieval Agent** - Fetches relevant knowledge from the vector store
-4. **Reasoning Agent** - Generates actionable recommendations
+The system uses a pipeline orchestrated by LangGraph. Current agents included in `project/agents/`:
+
+- **Intake Agent** - Collects organizational context and current state
+- **Diagnostic Agent** - Analyzes capability gaps and identifies risks
+- **Retrieval Agent** - Fetches relevant knowledge from the vector store
+- **Reasoning Agent** - Generates actionable recommendations
+- **DSS Agent** - Orchestrates output formatting and DSS workflows
+- **Strategy Agent** - Produces strategic actions and roadmaps
+- **Technology Assessment Agent** - Evaluates technology profiles and fit
+
+Agents are modular and communicate via the `GraphState` passed through the pipeline.
 
 ### Knowledge Base
 
-- **Frozen Knowledge Model v1.0** - Core domain knowledge (as of 2026-05-31)
+- **Frozen Knowledge Model v2 (draft)** - Core domain knowledge (updated)
 - **Vector Store** - Chroma-based embedding and retrieval system
 - **Capability Units** - Structured knowledge on metadata management, data governance, etc.
 
@@ -83,6 +99,10 @@ The `GraphState` carries the following information through the pipeline:
 - recommendations: list             # Generated recommendations
 - diagnosis: dict                   # Complete diagnosis output
 ```
+
+### Model Mapping
+
+The Python data models in `project/models/` are implemented following the Knowledge Model defined in `knowledge_bases/capabilities/Knowledge_Model_v2.md`. Ensure that updates to the knowledge model are propagated to the corresponding Python models and validation rules.
 
 ## Setup & Installation
 
@@ -109,7 +129,7 @@ The `GraphState` carries the following information through the pipeline:
 
 3. **Install dependencies**
    ```bash
-   pip install -r project/requirements.txt
+   pip install -r requirements.txt
    ```
 
 4. **Build knowledge vector store** (if needed)
@@ -175,12 +195,10 @@ python knowledge_bases/vectorstore/debug_chroma.py
 
 ## Knowledge Model Status
 
-- **Version:** 1.0
-- **Status:** FROZEN (as of 2026-05-31)
+- **Version:** 2.0 (draft)
+- **Status:** FROZEN / draft updates (2026)
 - **Approval Date:** 2026-05-31
 - **Language:** English
-
-The knowledge model is frozen and should not be modified without formal approval.
 
 ## Architecture Notes
 
@@ -195,4 +213,4 @@ This is a TFM (Trabajo Fin de Máster / Master's Thesis) project.
 
 ---
 
-**Last Updated:** 2026-06-08
+**Last Updated:** 2026-06-13

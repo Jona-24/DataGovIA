@@ -51,13 +51,23 @@ result = graph.invoke(
     {
         "user_input":
         """
-        We are a SME retail company.
+        We are a medium-sized retail company.
 
-        We use Excel and Power BI.
+        We use Excel, SQL Server and Power BI.
 
-        Reports are inconsistent.
+        Different departments produce conflicting reports.
+
+        Customer information is duplicated across systems.
+
+        Data ownership is unclear.
 
         We do not have a data catalog.
+
+        Business definitions vary among departments.
+
+        Data quality problems are recurrent and require manual corrections.
+
+        We lack formal governance processes.
         """
     }
 )

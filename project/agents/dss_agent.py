@@ -1,17 +1,18 @@
 from llm.provider import llm
+from models.dss_report import DSSReport
 
 
 def dss_agent(state):
 
     print("Running DSS Agent")
 
-    organization_context = state["organization_context"]
+    organization_context = state.organization_context
 
-    technology_profile = state["technology_profile"]
+    technology_profile = state.technology_profile
 
-    diagnosis = state["diagnosis"]
+    diagnosis = state.diagnosis
 
-    strategy = state["strategy"]
+    strategy = state.strategy
 
     prompt = f"""
     You are an expert Data Governance consultant.
@@ -57,6 +58,6 @@ def dss_agent(state):
         prompt
     )
 
-    state["final_response"] = response.content
+    state.final_response = DSSReport(report=response.content)
 
     return state

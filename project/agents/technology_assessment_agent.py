@@ -1,13 +1,14 @@
 from llm.provider import llm
 import json
 import re
+from models.technology_profile import TechnologyProfile
 
 
 def technology_assessment_agent(state):
 
     print("Running Technology Assessment Agent")
 
-    context = state["organization_context"]
+    context = state.organization_context
 
     prompt = f"""
     You are a senior Data Governance and Data Architecture consultant.
@@ -51,6 +52,18 @@ def technology_assessment_agent(state):
 
     Return ONLY valid JSON.
 
+    Do not add explanations.
+
+    Do not add comments.
+
+    Do not add markdown.
+
+    Do not add ```json blocks.
+
+    JSON comments are forbidden.
+
+    The output must be parseable by Python json.loads().
+
     Schema:
 
     {{
@@ -65,16 +78,30 @@ def technology_assessment_agent(state):
 
     response = llm.invoke(prompt)
 
+    print(response.content)
+
     json_match = re.search(
         r"\{.*\}",
         response.content,
         re.DOTALL
     )
 
+    if json_match:
+        raw_json = json_match.group()
+
+    else:
+        raw_json = response.content.strip()
+
+    if not raw_json.endswith("}"):
+        raw_json += "}"
     parsed = json.loads(
-        json_match.group()
+        raw_json
     )
 
-    state["technology_profile"] = parsed
+    profile = TechnologyProfile(
+        **parsed
+    )
+
+    state.technology_profile = profile
 
     return state

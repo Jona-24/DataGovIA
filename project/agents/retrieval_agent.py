@@ -12,14 +12,11 @@ def retrieval_agent(state):
 
     print("Running Retrieval Agent")
 
-    capability_gaps = state.get(
-        "capability_gaps",
-        []
-    )
+    capability_gaps = state.capability_gaps
 
     if not capability_gaps:
 
-        state["retrieved_knowledge"] = []
+        state.retrieved_knowledge = []
 
         return state
 
@@ -51,6 +48,6 @@ def retrieval_agent(state):
             doc.page_content
         )
 
-    state["retrieved_knowledge"] = retrieved
+    state.retrieved_knowledge = retrieved
     
     return state
