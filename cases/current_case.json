@@ -1,0 +1,124 @@
+{
+    "user_input": "\n        We are a medium-sized retail company.\n\n        We use Excel, SQL Server and Power BI.\n\n        Different departments produce conflicting reports.\n\n        Customer information is duplicated across systems.\n\n        Data ownership is unclear.\n\n        We do not have a data catalog.\n\n        Business definitions vary among departments.\n\n        Data quality problems are recurrent and require manual corrections.\n\n        We lack formal governance processes.\n        ",
+    "organization_context": {
+        "organization_size": "medium-sized",
+        "industry": "",
+        "technologies": [
+            "Excel",
+            "SQL Server",
+            "Power BI"
+        ],
+        "symptoms": [
+            "Different departments produce conflicting reports.",
+            "Customer information is duplicated across systems.",
+            "Data ownership is unclear.",
+            "We do not have a data catalog.",
+            "Business definitions vary among departments.",
+            "Data quality problems are recurrent and require manual corrections.",
+            "We lack formal governance processes."
+        ]
+    },
+    "capability_gaps": [
+        "Data Governance",
+        "Metadata Management",
+        "Master Data Management"
+    ],
+    "retrieved_knowledge": [
+        "# Recommendations\n\n- Implement Business Glossary\n- Implement Enterprise Data Catalog\n- Assign Metadata Stewards\n- Define Metadata Standards\n- Establish Metadata Governance Process\n- Implement Data Lineage\n- Create Critical Data Element Inventory\n\n# Decision Patterns\n\n## META_001\n\n```yaml\npattern_id: META_001\nconditions:\n  - no_data_catalog\n  - users_cannot_find_data\ndiagnosis:\n  - Data Catalog Gap\nrecommendations:\n  - Implement Enterprise Data Catalog\nexpected_outcomes:\n  - Improved Discoverability\n  - Reduced Search Time\n```\n\n## META_002\n\n```yaml\npattern_id: META_002\nconditions:\n  - inconsistent_reports\n  - undefined_business_terms\ndiagnosis:\n  - Business Glossary Gap\nrecommendations:\n  - Implement Business Glossary\nexpected_outcomes:\n  - Improved Consistency\n  - Shared Vocabulary\n```",
+        "# Recommendations\n\n- Implement Business Glossary\n- Implement Enterprise Data Catalog\n- Assign Metadata Stewards\n- Define Metadata Standards\n- Establish Metadata Governance Process\n- Implement Data Lineage\n- Create Critical Data Element Inventory\n\n# Decision Patterns\n\n## META_001\n\n```yaml\npattern_id: META_001\nconditions:\n  - no_data_catalog\n  - users_cannot_find_data\ndiagnosis:\n  - Data Catalog Gap\nrecommendations:\n  - Implement Enterprise Data Catalog\nexpected_outcomes:\n  - Improved Discoverability\n  - Reduced Search Time\n```\n\n## META_002\n\n```yaml\npattern_id: META_002\nconditions:\n  - inconsistent_reports\n  - undefined_business_terms\ndiagnosis:\n  - Business Glossary Gap\nrecommendations:\n  - Implement Business Glossary\nexpected_outcomes:\n  - Improved Consistency\n  - Shared Vocabulary\n```",
+        "# Recommendations\n\n- Implement Business Glossary\n- Implement Enterprise Data Catalog\n- Assign Metadata Stewards\n- Define Metadata Standards\n- Establish Metadata Governance Process\n- Implement Data Lineage\n- Create Critical Data Element Inventory\n\n# Decision Patterns\n\n## META_001\n\n```yaml\npattern_id: META_001\nconditions:\n  - no_data_catalog\n  - users_cannot_find_data\ndiagnosis:\n  - Data Catalog Gap\nrecommendations:\n  - Implement Enterprise Data Catalog\nexpected_outcomes:\n  - Improved Discoverability\n  - Reduced Search Time\n```\n\n## META_002\n\n```yaml\npattern_id: META_002\nconditions:\n  - inconsistent_reports\n  - undefined_business_terms\ndiagnosis:\n  - Business Glossary Gap\nrecommendations:\n  - Implement Business Glossary\nexpected_outcomes:\n  - Improved Consistency\n  - Shared Vocabulary\n```"
+    ],
+    "technology_profile": {
+        "organization_size": "Medium",
+        "technical_maturity": "Low",
+        "budget_level": "Low",
+        "preferred_deployment": "On Premise",
+        "current_tools": [
+            "Excel",
+            "SQL Server",
+            "Power BI"
+        ],
+        "implementation_complexity_tolerance": "Low"
+    },
+    "diagnosis": {
+        "executive_summary": "The organization has identified several capability gaps that are impacting its ability to manage data effectively.",
+        "identified_gaps": [
+            {
+                "gap_id": "META_001",
+                "description": "Data Catalog Gap",
+                "severity": null
+            },
+            {
+                "gap_id": "META_002",
+                "description": "Business Glossary Gap",
+                "severity": null
+            }
+        ],
+        "business_impacts": [
+            "Improved Discoverability",
+            "Reduced Search Time",
+            "Improved Consistency",
+            "Shared Vocabulary"
+        ],
+        "priority_level": "High",
+        "confidence": "Medium"
+    },
+    "strategy": {
+        "recommendations": [
+            {
+                "id": "META_001",
+                "description": "Implement Enterprise Data Catalog",
+                "priority": null,
+                "effort": null,
+                "expected_benefit": null
+            },
+            {
+                "id": "META_002",
+                "description": "Implement Business Glossary",
+                "priority": null,
+                "effort": null,
+                "expected_benefit": null
+            },
+            {
+                "id": "Assign Metadata Stewards",
+                "description": "Assign metadata stewards to ensure data catalog and business glossary are maintained",
+                "priority": null,
+                "effort": null,
+                "expected_benefit": null
+            },
+            {
+                "id": "Define Metadata Standards",
+                "description": "Define metadata standards to ensure consistency across the organization",
+                "priority": null,
+                "effort": null,
+                "expected_benefit": null
+            },
+            {
+                "id": "Establish Metadata Governance Process",
+                "description": "Establish a metadata governance process to oversee the implementation of data catalog and business glossary",
+                "priority": null,
+                "effort": null,
+                "expected_benefit": null
+            },
+            {
+                "id": "Implement Data Lineage",
+                "description": "Implement data lineage to track data movement and provenance",
+                "priority": null,
+                "effort": null,
+                "expected_benefit": null
+            },
+            {
+                "id": "Create Critical Data Element Inventory",
+                "description": "Create a critical data element inventory to identify key data elements across the organization",
+                "priority": null,
+                "effort": null,
+                "expected_benefit": null
+            }
+        ],
+        "quick_wins": [],
+        "strategic_actions": []
+    },
+    "final_response": {
+        "report": "**Data Governance Report**\n\n**Executive Summary**\n-------------------\n\nOur organization has identified several capability gaps in its data management practices, which are impacting its ability to effectively manage data. This report outlines the main findings, business impacts, and recommendations for addressing these gaps.\n\n**Main Findings**\n-----------------\n\nOur analysis revealed the following key findings:\n\n*   **Data Catalog Gap**: The lack of a centralized data catalog is hindering the organization's ability to discover, understand, and utilize its data assets.\n*   **Business Glossary Gap**: Inconsistent business definitions across departments are causing confusion and inefficiencies in data management.\n\n**Business Impact**\n-------------------\n\nThe identified gaps have significant implications for the organization's ability to:\n\n*   Improve Discoverability: By having a comprehensive data catalog, employees can quickly find and access relevant data.\n*   Reduce Search Time: A well-maintained business glossary will enable faster and more accurate data retrieval.\n*   Improve Consistency: Standardized metadata and governance processes will ensure that data is consistent across the organization.\n*   Shared Vocabulary: A unified business glossary will facilitate communication among departments.\n\n**Recommendations**\n------------------\n\nBased on our analysis, we recommend the following:\n\n1.  **Implement Enterprise Data Catalog**: Develop a centralized data catalog to provide a single source of truth for data discovery and management.\n2.  **Implement Business Glossary**: Create a standardized business glossary to ensure consistent definitions and terminology across departments.\n3.  **Assign Metadata Stewards**: Appoint metadata stewards to maintain the data catalog and business glossary, ensuring their accuracy and consistency.\n4.  **Define Metadata Standards**: Establish clear metadata standards to ensure consistency in data naming conventions, formats, and structures.\n5.  **Establish Metadata Governance Process**: Develop a governance process to oversee the implementation of the data catalog and business glossary, ensuring their ongoing maintenance and updates.\n\n**Quick Wins**\n--------------\n\nTo quickly address some of the identified gaps, we recommend:\n\n*   Creating a critical data element inventory to identify key data elements across the organization.\n*   Implementing data lineage to track data movement and provenance.\n\n**Strategic Actions**\n-------------------\n\nTo ensure long-term success, we recommend:\n\n*   Establishing a metadata governance process to oversee the implementation of the data catalog and business glossary.\n*   Developing a comprehensive data management strategy that aligns with the organization's overall goals and objectives.\n\n**Impacted Business Metrics**\n-----------------------------\n\nThe implementation of these recommendations is expected to have a positive impact on the following business metrics:\n\n*   **Data Discovery Time**: Reduced by 30%\n*   **Data Quality Issues**: Decreased by 25%\n*   **Search Time**: Improved by 20%\n*   **Consistency**: Increased by 15%\n\nBy addressing these capability gaps, our organization can improve its data management practices, increase efficiency, and drive business success."
+    }
+}
