@@ -55,6 +55,15 @@ def reasoning_agent(state):
     parsed = json.loads(
         json_match.group()
     )
+    for gap in parsed["identified_gaps"]:
+        if "pattern_id" in gap:
+            gap["gap_id"] = gap.pop(
+                "pattern_id"
+            )
+        if "diagnosis" in gap:
+            gap["description"] = gap.pop(
+                "diagnosis"
+            )
 
     diagnosis = Diagnosis(
         **parsed

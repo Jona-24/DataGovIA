@@ -3,12 +3,10 @@ from models.recommendation import Recommendation
 from models.strategic_action import StrategicAction
 
 
-class Strategy(
-    BaseModel
-):
+class Strategy(BaseModel):
 
-    recommendations: list[Recommendation]
+    recommendations: list[dict] = []
 
-    quick_wins: list[str]
+    quick_wins: list[dict] = []
 
-    strategic_actions: list[StrategicAction]
+    strategic_actions: list[dict] = []
