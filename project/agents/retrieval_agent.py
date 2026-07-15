@@ -20,8 +20,6 @@ def retrieval_agent(state):
 
         return state
 
-    query = capability_gaps[0]
-
     embeddings = OllamaEmbeddings(
         model="nomic-embed-text"
     )
@@ -33,21 +31,25 @@ def retrieval_agent(state):
         embedding_function=embeddings
     )
 
-    data = db._collection.get()
-
-    results = db.similarity_search(
-        query,
-        k=3
-    )
-
     retrieved = []
 
-    for doc in results:
+    for gap in capability_gaps:
 
-        retrieved.append(
-            doc.page_content
+        print(f"Retrieving knowledge for: {gap}")
+
+        results = db.similarity_search(
+            gap,
+            k=2
         )
 
+        for doc in results:
+
+            if doc.page_content not in retrieved:
+
+                retrieved.append(
+                    doc.page_content
+                )
+
     state.retrieved_knowledge = retrieved
-    
+
     return state

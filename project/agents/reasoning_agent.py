@@ -14,32 +14,70 @@ def reasoning_agent(state):
     knowledge = state.retrieved_knowledge
 
     prompt = f"""
-    You are a senior Data Governance consultant.
+    # Role
 
-    Organization Context:
+    You are a senior Data Governance consultant responsible for diagnosing organizational Data Governance capability gaps.
+
+    Your responsibility is to analyze the identified capability gaps using the available organizational context and retrieved knowledge.
+
+    Do not generate implementation strategies, recommendations, or action plans. Focus exclusively on the diagnostic assessment.
+
+    # Task
+
+    Produce a diagnosis based exclusively on the information provided.
+
+    # Context
+
+    ## Organization Context
 
     {context}
 
-    Capability Gaps:
+    ## Capability Gaps
 
     {gaps}
 
-    Relevant Knowledge:
+    ## Relevant Knowledge
 
     {knowledge}
 
-    Produce a diagnosis.
+    # Reasoning Constraints
+
+    - Use only the provided organization context, capability gaps, and retrieved knowledge.
+    - Do not invent facts or infer information that is not explicitly supported.
+    - Do not introduce new capability gaps.
+    - Do not generate recommendations or implementation strategies.
+    - Keep the diagnosis consistent with the provided evidence.
+    - If a capability gap is identified, represent it as a JSON object following the required schema.
+    - Use the knowledge provided to assign appropriate gap identifiers and severity levels when supported.
+
+    # Output
 
     Return ONLY valid JSON.
 
-    Schema:
+    Do not include explanations.
+
+    Do not include markdown.
+
+    Do not include code.
+
+    Do not include ```json blocks.
+
+    The output must be directly parseable by Python json.loads().
+
+    The JSON must follow exactly this schema:
 
     {{
-        "executive_summary":"",
-        "identified_gaps":[],
-        "business_impacts":[],
-        "priority_level":"",
-        "confidence":""
+        "executive_summary": "",
+        "identified_gaps": [
+            {{
+                "gap_id": "",
+                "description": "",
+                "severity": ""
+            }}
+        ],
+        "business_impacts": [],
+        "priority_level": "",
+        "confidence": ""
     }}
     """
 
